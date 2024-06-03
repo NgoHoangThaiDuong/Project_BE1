@@ -1,17 +1,19 @@
 
 package Model;
 
+import java.io.Serializable;
 
-public class Vehicle {
+
+public abstract class Vehicle implements Serializable {
     private String name;
     private String color;
     private String brand;
     private String type;
-    private int id;
+    private String id;
     private int productYear;
     private double price;
 
-    public Vehicle(String name, String color, String brand, String type, int id, int productYear, double price) {
+    public Vehicle(String name, String color, String brand, String type, String id, int productYear, double price) {
         this.name = name;
         this.color = color;
         this.brand = brand;
@@ -53,11 +55,11 @@ public class Vehicle {
         this.type = type;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -76,6 +78,7 @@ public class Vehicle {
     public void setPrice(double price) {
         this.price = price;
     }
-    
-    
+    public abstract void displayInfo();
+
+       
 }
