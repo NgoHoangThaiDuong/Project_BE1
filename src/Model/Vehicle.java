@@ -13,14 +13,22 @@ public abstract class Vehicle implements Serializable {
     private int productYear;
     private double price;
 
-    public Vehicle(String name, String color, String brand, String type, String id, int productYear, double price) {
+    public Vehicle(String id, String name, String color, String brand, String type, int productYear, double price) {
+        this.id = id;
         this.name = name;
         this.color = color;
         this.brand = brand;
         this.type = type;
-        this.id = id;
         this.productYear = productYear;
         this.price = price;
+    }
+    
+     public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -54,15 +62,7 @@ public abstract class Vehicle implements Serializable {
     public void setType(String type) {
         this.type = type;
     }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
+    
     public int getProductYear() {
         return productYear;
     }

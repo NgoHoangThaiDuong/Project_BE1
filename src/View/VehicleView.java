@@ -2,7 +2,9 @@
 package View;
 
 import Model.Car;
+import Model.Motorbike;
 import Model.Vehicle;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -13,7 +15,7 @@ public class VehicleView {
         scanner = new Scanner(System.in);
     }
     public Vehicle getVehicleDetails(){
-        int numberOfSeats = 0;
+        int numberOfSeats;
         int productYear;
         double price;
         int engineCapacity ;
@@ -36,7 +38,7 @@ public class VehicleView {
                 price = Double.parseDouble(scanner.nextLine());
                 break;
             } catch (Exception e){
-                System.out.println("Please enter a valid double for price.");
+                System.out.println("Please enter a valid double for price");
             }
         }
         System.out.println("Enter Vehicle Brand:");
@@ -51,7 +53,7 @@ public class VehicleView {
                 productYear = Integer.parseInt(scanner.nextLine());
                 break;
             } catch (Exception e){
-                System.out.println("Please enter a valid int for product year.");
+                System.out.println("Please enter a valid int for product year");
             }
         }
         if (vehicleType == 1) {
@@ -76,10 +78,21 @@ public class VehicleView {
                     System.out.println("Please enter a valid int for engine capacity");
                 }
             }
-            
+            return new Motorbike(id, name, color, brand, type, productYear, price, engineCapacity);
+        } else {
+            System.out.println("Invalid vehicle type");
+            return getVehicleDetails();
         }
-       
-        
     }
+        public void displayVehicleList(ArrayList<Vehicle> vehicleList){
+            for(Vehicle vehicle : vehicleList){
+                vehicle.displayInfo();
+            }
+        }
+        public int getVehicleId() {
+        System.out.println("Enter Vehicle ID:");
+        return scanner.nextInt();
+    }
+
     
 }
