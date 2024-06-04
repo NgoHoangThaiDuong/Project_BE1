@@ -6,6 +6,7 @@ import Model.Motorbike;
 import Model.Vehicle;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
 
 
 public class VehicleView {
@@ -131,8 +132,8 @@ public class VehicleView {
             return getVehicleDetails();
         }
     }
-        public void displayVehicleList(ArrayList<Vehicle> vehicleList){
-            for(Vehicle vehicle : vehicleList){
+        public void displayVehicleList(List<Vehicle> vehicles){
+            for(Vehicle vehicle : vehicles){
                 vehicle.displayInfo();
             }
         } 

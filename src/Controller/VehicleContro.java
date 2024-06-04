@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 
 public class VehicleContro {
@@ -141,14 +144,14 @@ public class VehicleContro {
                 System.out.println("Invalid input for price");
             }
             } else {
-                System.out.println("price cannot be empty");
+                System.out.println("Price cannot be empty");
         }
     }
         System.out.println("Vehicle update succesfully");
         saveToFile();
 }
     public void deleteVehicle(){
-        System.out.println("Enter vehicle ID to delete");
+        System.out.println("Enter vehicle ID to delete:");
         String idToDelete = scanner.nextLine();
         Vehicle vehicleToDelete = null;
         
@@ -158,7 +161,6 @@ public class VehicleContro {
                 break;
             }
         }
-        
         if (vehicleToDelete == null) {
             System.out.println("Vehicle not found with this ID");
             return;
@@ -174,5 +176,55 @@ public class VehicleContro {
             System.out.println("Cancelled");
         }
     }
-}
+    public void searchVehicle(){
+        System.out.println("Select way to search:");
+        System.out.println("1.By name");
+        System.out.println("2.By ID");
+        try {
+            int choice = Integer.parseInt(scanner.nextLine());
+            if(choice == 1){
+                searchByName();
+            } else if (choice == 2) {
+                searchById();
+            } else {
+                System.out.println("Invalid choice");
+            }
+        } catch (Exception e) {
+            System.out.println("Please enter choice");
+        }
+    }
+        private void searchByName() {
+            System.out.println("Enter vehicle name to search");
+            String nameToSearch = scanner.nextLine().toLowerCase();
+            List<Vehicle> foundVehicles = new ArrayList<>();
+            for (Vehicle vehicle : vehicleList){
+                if(vehicle.getName().toLowerCase().contains(nameToSearch)){
+                    foundVehicles.add(vehicle);
+                }
+            }
+            if(foundVehicles.isEmpty()){
+                System.out.println("No vehicle found");
+            } else {
+                foundVehicles.sort(Comparator.comparing(Vehicle::getPrice).reversed());
+                view.displayVehicleList(foundVehicles);
+            }
+        }
+        private void searchById() {
+            System.out.println("Enter vehicle ID to search");
+            String idToSearch = scanner.nextLine();
+            List<Vehicle> foundVehicles = new ArrayList<>();
+            
+            for (Vehicle vehicle : vehicleList) {
+                if(vehicle.getId().equals(idToSearch)){
+                    foundVehicles.add(vehicle);
+                    view.displayVehicleList(foundVehicles);
+                    return;
+                }
+            }
+            System.out.println("Vehicle not found");
+        }
+        
+    }
+
+
 
