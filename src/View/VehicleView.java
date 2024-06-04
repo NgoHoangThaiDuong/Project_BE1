@@ -15,23 +15,75 @@ public class VehicleView {
         scanner = new Scanner(System.in);
     }
     public Vehicle getVehicleDetails(){
+        String id;
+        String name;
+        String color;
+        String brand;
+        String type;
         int numberOfSeats;
         int productYear;
         double price;
-        int engineCapacity ;
+        int engineCapacity;
+        int vehicleType;
         
+        while (true) {           
+        try {
         System.out.println("Enter Vehicle Type (1.Car, 2.Motorbike):");
-        int vehicleType = Integer.parseInt(scanner.nextLine());
-        
+        vehicleType = Integer.parseInt(scanner.nextLine());
+        if (vehicleType == 1 || vehicleType == 2){
+            break;
+        }else{
+            System.out.println("Please enter 1 for Car or 2 for Motorbike");
+        }
+        } catch (Exception e){
+            System.out.println("Please enter a number");
+        }
+        }
+        while (true) {           
         System.out.println("Enter Vehicle ID:");
-        String id = scanner.nextLine();
-                
+        id = scanner.nextLine();
+        if(!id.isEmpty()){
+            break;
+        } else {
+            System.out.println("ID can't be empty");
+        }
+        }
+        while (true) {            
         System.out.println("Enter Vehicle Name:");
-        String name = scanner.nextLine();
-        
+        name = scanner.nextLine();
+        if(!name.isEmpty()){
+            break;
+        } else {
+            System.out.println("Name can't be empty");
+        }
+        }
+        while (true) {            
         System.out.println("Enter Vehicle Color:");
-        String color = scanner.nextLine();
-        
+        color = scanner.nextLine();
+        if(!color.isEmpty()){
+            break;
+        } else {
+            System.out.println("Color can't be empty");
+        }
+        }
+        while (true) {            
+        System.out.println("Enter Vehicle Brand:");
+        brand = scanner.nextLine();
+        if(!brand.isEmpty()){
+            break;
+        } else {
+            System.out.println("Brand can't be empty");
+        }
+        }
+        while (true) {            
+        System.out.println("Enter Vehicle Type:");
+        type = scanner.nextLine();
+        if(!type.isEmpty()){
+            break;
+        } else {
+            System.out.println("Type can't be empty");
+        }
+        }
         while(true) {
             try {
                 System.out.println("Enter Vehicle Price:");
@@ -41,12 +93,7 @@ public class VehicleView {
                 System.out.println("Please enter a valid double for price");
             }
         }
-        System.out.println("Enter Vehicle Brand:");
-        String brand = scanner.nextLine();
-        
-        System.out.println("Enter Vehicle Type:");
-        String type = scanner.nextLine();
-        
+               
         while(true) {
             try {
                 System.out.println("Enter Vehicle Product Year:");
