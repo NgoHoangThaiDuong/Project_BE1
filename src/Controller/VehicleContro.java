@@ -15,6 +15,7 @@ public class VehicleContro {
     private ArrayList<Vehicle> vehicleList;
     private VehicleView view;
     private final String dataFile = "src\\Data\\Vehicle.txt";
+    Scanner scanner = new Scanner(System.in);
 
     public VehicleContro(ArrayList<Vehicle> vehicleList, VehicleView view) {
         this.vehicleList = vehicleList;
@@ -45,8 +46,8 @@ public class VehicleContro {
             System.out.println("Failed to add vehicle");
             return;
         }
-        for(Vehicle v : vehicleList){
-            if(v.getId() == newVehicle.getId()){
+        for(Vehicle vehicle : vehicleList){
+            if(vehicle.getId().equals(newVehicle.getId())){
                 System.out.println("Vehicle ID already exists");
                 return;
             }
@@ -56,7 +57,6 @@ public class VehicleContro {
         saveToFile();
     }
     public void updateVehicle() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Vehicle ID to update:");
         String id = new Scanner(System.in).nextLine();
 
@@ -147,5 +147,32 @@ public class VehicleContro {
         System.out.println("Vehicle update succesfully");
         saveToFile();
 }
+    public void deleteVehicle(){
+        System.out.println("Enter vehicle ID to delete");
+        String idToDelete = scanner.nextLine();
+        Vehicle vehicleToDelete = null;
+        
+        for (Vehicle vehicle : vehicleList) {
+            if(vehicle.getId().equals(idToDelete)){
+                vehicleToDelete = vehicle;
+                break;
+            }
+        }
+        
+        if (vehicleToDelete == null) {
+            System.out.println("Vehicle not found with this ID");
+            return;
+        }
+        
+        System.out.println("Are you sure you want to delete this vehicle? (yes/no):");
+        String confirm = scanner.nextLine();
+        if(confirm.equalsIgnoreCase("yes")) {
+            vehicleList.remove(vehicleToDelete);
+            System.out.println("Vehicle deleted successfully");
+            saveToFile();
+        } else {
+            System.out.println("Cancelled");
+        }
+    }
 }
 
