@@ -21,7 +21,7 @@ public class VehicleView {
         int engineCapacity ;
         
         System.out.println("Enter Vehicle Type (1.Car, 2.Motorbike):");
-        int vehicleType = scanner.nextInt();
+        int vehicleType = Integer.parseInt(scanner.nextLine());
         
         System.out.println("Enter Vehicle ID:");
         String id = scanner.nextLine();
@@ -88,11 +88,5 @@ public class VehicleView {
             for(Vehicle vehicle : vehicleList){
                 vehicle.displayInfo();
             }
-        }
-        public int getVehicleId() {
-        System.out.println("Enter Vehicle ID:");
-        return scanner.nextInt();
-    }
-
-    
+        } 
 }

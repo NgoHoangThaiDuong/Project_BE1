@@ -55,5 +55,97 @@ public class VehicleContro {
         System.out.println("Vehicle added successfully");
         saveToFile();
     }
-    
+    public void updateVehicle() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Vehicle ID to update:");
+        String id = new Scanner(System.in).nextLine();
+
+        Vehicle foundVehicle = null;
+        for (Vehicle vehicle : vehicleList) {
+            if (vehicle.getId().equals(id)) {
+                foundVehicle = vehicle;
+                break;
+            }
+        }
+
+        if (foundVehicle == null) {
+            System.out.println("Vehicle not found");
+            return;
+        }
+        System.out.println("Enter new details(leave empty to keep current value)");
+                          
+        System.out.println("Enter new vehicle ID:");
+        String newId = scanner.nextLine();
+        if(!newId.isEmpty()){
+        foundVehicle.setId(newId);
+        } else{
+            System.out.println("Keeping current ID");
+        }
+
+        System.out.println("Enter new vehicle name:");
+        String newName = scanner.nextLine();
+        if(!newName.isEmpty()){
+        foundVehicle.setName(newName);
+        } else {
+            System.out.println("Keeping current name");
+        }
+                   
+        System.out.println("Enter new vehicle color:");
+        String newColor = scanner.nextLine();
+        if(!newColor.isEmpty()){
+        foundVehicle.setColor(newColor);
+        }else {
+            System.out.println("Keeping current color");
+        }
+                
+        System.out.println("Enter new vehicle brand:");
+        String newBrand = scanner.nextLine();
+        if(!newBrand.isEmpty()){
+        foundVehicle.setBrand(newBrand);
+        } else {
+            System.out.println("Keeping current brand");
+        }
+                       
+        System.out.println("Enter new vehicle type:");
+        String newType = scanner.nextLine();
+        if(!newType.isEmpty()){
+        foundVehicle.setType(newType);
+        } else {
+            System.out.println("Keeping current type");
+        }
+        while(true) { 
+        System.out.println("Enter new vehicle product year");
+        String input = scanner.nextLine();
+        if (!input.isEmpty()) {
+        try {
+        int productYear = Integer.parseInt(input);
+        foundVehicle.setProductYear(productYear);
+        break;
+        } catch (Exception e){
+        System.out.println("Invalid input for product year");
+        }
+        } else {
+        System.out.println("Keeping current product year");
+        break;
+        }
+    }
+        while(true){
+            System.out.println("Enter new vehicle price");
+            String input = scanner.nextLine();
+            if (!input.isEmpty()) {
+            try {
+                double price = Double.parseDouble(input);
+                foundVehicle.setPrice(price);
+                break;
+            } catch (Exception e){
+                System.out.println("Invalid input for price");
+            }
+            } else {
+                System.out.println("price cannot be empty");
+        }
+    }
+        System.out.println("Vehicle update succesfully");
+        saveToFile();
 }
+}
+
