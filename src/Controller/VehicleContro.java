@@ -190,7 +190,7 @@ public class VehicleContro {
                 System.out.println("Invalid choice");
             }
         } catch (Exception e) {
-            System.out.println("Please enter choice");
+            System.out.println("Please enter correct choice");
         }
     }
         private void searchByName() {
@@ -222,6 +222,33 @@ public class VehicleContro {
                 }
             }
             System.out.println("Vehicle not found");
+        }
+        public void displayVehicleList(){
+            System.out.println("Select way to show");
+            System.out.println("1.Show all");
+            System.out.println("2.Show by descending price");
+             
+            try{
+                int choice = Integer.parseInt(scanner.nextLine());
+                if(choice == 1){
+                    displayAll();
+                } else if (choice == 2){
+                    displayByDescendingPrice();
+                } else {
+                    System.out.println("Invalid choice");
+                }
+            } catch (Exception e){
+                System.out.println("Please enter correct choice");
+            }
+    
+}
+        private void displayAll(){
+            view.displayVehicleList(vehicleList);
+        }
+        private void displayByDescendingPrice(){
+            List<Vehicle> sortedVehicles = new ArrayList<>(vehicleList);
+            sortedVehicles.sort(Comparator.comparing(Vehicle::getPrice).reversed());
+            view.displayVehicleList(sortedVehicles);
         }
         
     }
