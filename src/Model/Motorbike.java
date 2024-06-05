@@ -17,15 +17,7 @@ public class Motorbike extends Vehicle{
         this.engineCapacity = engineCapacity;
     }
     @Override
-    public void displayInfo() {
-        System.out.println("Motorbike ID: " + getId());
-        System.out.println("Name: " + getName());
-        System.out.println("Color: " + getColor());
-        System.out.println("Price: " + getPrice());
-        System.out.println("Brand: " + getBrand());
-        System.out.println("Type: " + getType());
-        System.out.println("Product Year: " + getProductYear());
-        System.out.println("Engine Capacity: " + engineCapacity + "cc");
-        
-    }    
+    public String getFormatInfo(){
+        return String.format("%ddc", engineCapacity);
+    }
 }

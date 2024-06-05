@@ -16,20 +16,10 @@ public class Car extends Vehicle {
 
     public void setNumberOfSeats(int numberOfSeats) {
         this.numberOfSeats = numberOfSeats;
-    }
+    }    
     @Override
-     public void displayInfo() {
-        System.out.println("Car ID: " + getId());
-        System.out.println("Name: " + getName());
-        System.out.println("Color: " + getColor());
-        System.out.println("Price: " + getPrice());
-        System.out.println("Brand: " + getBrand());
-        System.out.println("Type: " + getType());
-        System.out.println("Product Year: " + getProductYear());
-        System.out.println("Number of Seats: " + numberOfSeats);
+    public String getFormatInfo(){
+        return String.format("%d", numberOfSeats);
     }
-  
-    
+    }   
 
-    
-}

@@ -223,7 +223,7 @@ public class VehicleContro {
             }
             System.out.println("Vehicle not found");
         }
-        public void displayVehicleList(){
+        public void displayVehicle(){
             System.out.println("Select way to show");
             System.out.println("1.Show all");
             System.out.println("2.Show by descending price");

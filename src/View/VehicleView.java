@@ -133,8 +133,13 @@ public class VehicleView {
         }
     }
         public void displayVehicleList(List<Vehicle> vehicles){
+            System.out.println("+------------+-----------------------+------------+-----------------+------------+------+------------+-------------+");
+            System.out.printf("| %-8s | %-20s | %-10s | %-15s | %-10s | %-4s | %-10s | %-10s |%n",
+            "ID", "Name", "Color", "Brand", "Type", "Year", "Price", "Seats/Engine");
+            System.out.println("+------------+-----------------------+------------+-----------------+------------+------+------------+-------------+");
             for(Vehicle vehicle : vehicles){
-                vehicle.displayInfo();
+                System.out.println(vehicle);
             }
+            System.out.println("+------------+-----------------------+------------+-----------------+------------+------+------------+-------------+");
         } 
 }

@@ -78,7 +78,12 @@ public abstract class Vehicle implements Serializable {
     public void setPrice(double price) {
         this.price = price;
     }
-    public abstract void displayInfo();
+    public abstract String getFormatInfo();
+
+    @Override
+    public String toString() {
+        return String.format("| %-8s | %-20s | %-10s | %-15s | %-10s | %-4d | %,10.2f | %-10s |", id, name, color, brand, type, productYear, price, getFormatInfo());
+    }
 
        
 }
