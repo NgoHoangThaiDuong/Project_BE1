@@ -117,13 +117,17 @@ public class VehicleContro {
             System.out.println("Keeping current type");
         }
         while(true) { 
-        System.out.println("Enter new vehicle product year");
+        System.out.println("Enter new vehicle product year:");
         String input = scanner.nextLine();
         if (!input.isEmpty()) {
         try {
         int productYear = Integer.parseInt(input);
+        if(productYear >= 0){
         foundVehicle.setProductYear(productYear);
         break;
+        } else {
+            System.out.println("Product Year can't be negative");
+        }
         } catch (Exception e){
         System.out.println("Invalid input for product year");
         }
@@ -133,13 +137,17 @@ public class VehicleContro {
         }
     }
         while(true){
-            System.out.println("Enter new vehicle price");
+            System.out.println("Enter new vehicle price:");
             String input = scanner.nextLine();
             if (!input.isEmpty()) {
             try {
                 double price = Double.parseDouble(input);
+                if (price >= 0) {
                 foundVehicle.setPrice(price);
                 break;
+                } else {
+                    System.out.println("Price can't be negative");
+                }
             } catch (Exception e){
                 System.out.println("Invalid input for price");
             }
@@ -151,6 +159,7 @@ public class VehicleContro {
         saveToFile();
 }
     public void deleteVehicle(){
+        view.displayVehicleList(vehicleList);
         System.out.println("Enter vehicle ID to delete:");
         String idToDelete = scanner.nextLine();
         Vehicle vehicleToDelete = null;
@@ -194,6 +203,7 @@ public class VehicleContro {
         }
     }
         private void searchByName() {
+            view.displayVehicleList(vehicleList);
             System.out.println("Enter vehicle name to search");
             String nameToSearch = scanner.nextLine().toLowerCase();
             List<Vehicle> foundVehicles = new ArrayList<>();
@@ -210,6 +220,7 @@ public class VehicleContro {
             }
         }
         private void searchById() {
+            view.displayVehicleList(vehicleList);
             System.out.println("Enter vehicle ID to search");
             String idToSearch = scanner.nextLine();
             List<Vehicle> foundVehicles = new ArrayList<>();

@@ -18,6 +18,6 @@ public class Motorbike extends Vehicle{
     }
     @Override
     public String getFormatInfo(){
-        return String.format("%ddc", engineCapacity);
+        return String.format("%d cc", engineCapacity);
     }
 }

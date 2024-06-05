@@ -82,7 +82,7 @@ public abstract class Vehicle implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("| %-8s | %-20s | %-10s | %-15s | %-10s | %-4d | %,10.2f | %-10s |", id, name, color, brand, type, productYear, price, getFormatInfo());
+        return String.format("| %-8s | %-20s | %-10s | %-15s | %-10s | %-4d | %,10.2f | %-12s |", id, name, color, brand, type, productYear, price, getFormatInfo());
     }
 
        

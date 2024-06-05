@@ -89,7 +89,11 @@ public class VehicleView {
             try {
                 System.out.println("Enter Vehicle Price:");
                 price = Double.parseDouble(scanner.nextLine());
+                if(price >= 0){
                 break;
+                } else {
+                    System.out.println("Price can't be negative");
+                }
             } catch (Exception e){
                 System.out.println("Please enter a valid double for price");
             }
@@ -99,7 +103,11 @@ public class VehicleView {
             try {
                 System.out.println("Enter Vehicle Product Year:");
                 productYear = Integer.parseInt(scanner.nextLine());
+                if(productYear >= 0){
                 break;
+                } else {
+                    System.out.println("Product Year can't be negative");
+                }
             } catch (Exception e){
                 System.out.println("Please enter a valid int for product year");
             }
@@ -107,7 +115,7 @@ public class VehicleView {
         if (vehicleType == 1) {
             while(true) {
                 try {
-                System.out.println("Enter Number Of Seats");
+                System.out.println("Enter Number Of Seats:");
                 numberOfSeats = Integer.parseInt(scanner.nextLine());
                 break;
                 } catch (Exception e) {
@@ -119,7 +127,7 @@ public class VehicleView {
         } else if (vehicleType == 2) {
             while(true) {
                 try {
-                    System.out.println("Enter Engine Capacity");
+                    System.out.println("Enter Engine Capacity:");
                     engineCapacity = Integer.parseInt(scanner.nextLine());
                     break;
                 } catch (Exception e) {
@@ -133,13 +141,13 @@ public class VehicleView {
         }
     }
         public void displayVehicleList(List<Vehicle> vehicles){
-            System.out.println("+------------+-----------------------+------------+-----------------+------------+------+------------+-------------+");
+            System.out.println("+----------+----------------------+------------+-----------------+------------+------+------------+--------------+");
             System.out.printf("| %-8s | %-20s | %-10s | %-15s | %-10s | %-4s | %-10s | %-10s |%n",
             "ID", "Name", "Color", "Brand", "Type", "Year", "Price", "Seats/Engine");
-            System.out.println("+------------+-----------------------+------------+-----------------+------------+------+------------+-------------+");
+            System.out.println("+----------+----------------------+------------+-----------------+------------+------+------------+--------------+");
             for(Vehicle vehicle : vehicles){
                 System.out.println(vehicle);
             }
-            System.out.println("+------------+-----------------------+------------+-----------------+------------+------+------------+-------------+");
+            System.out.println("+----------+----------------------+------------+-----------------+------------+------+------------+--------------+");
         } 
 }
